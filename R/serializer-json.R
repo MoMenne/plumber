@@ -1,6 +1,10 @@
 jsonSerializer <- function(val, req, res, errorHandler){
   tryCatch({
-    json <- jsonlite::toJSON(val)
+    if(jsonlite::validate(val)) {
+      json <- val
+    } else {
+      json <- jsonlite::toJSON(val)
+    }
 
     res$setHeader("Content-Type", "application/json")
     res$body <- json
