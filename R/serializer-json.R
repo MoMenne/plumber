@@ -5,6 +5,7 @@ jsonSerializer <- function(val, req, res, errorHandler){
 
     res$setHeader("Content-Type", "application/json")
     res$body <- json
+    class(res$body) <- "json"
 
     return(res$toResponse())
   }, error=function(e){
