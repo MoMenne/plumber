@@ -1,6 +1,6 @@
 jsonSerializer <- function(val, req, res, errorHandler){
   tryCatch({
-      json <- val
+      json <- gsub("\\[|\\]", "", jsonlite::toJSON(val))
 
     res$setHeader("Content-Type", "application/json")
     res$body <- json
