@@ -24,7 +24,7 @@ PlumberResponse <- R6Class(
       list(
         status = self$status,
         headers = h,
-        body = self$body
+        body = noquote(self$body)
       )
     }
   )
